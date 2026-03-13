@@ -1,7 +1,7 @@
 using Unity.Mathematics;
 using UnityEngine;
 
-public class EnemyDeath : MonoBehaviour
+public class Death : MonoBehaviour
 {
     [SerializeField] private GameObject deathEffectPrefab;
 
@@ -13,7 +13,8 @@ public class EnemyDeath : MonoBehaviour
     void HandleDeath()
     {
         Instantiate(deathEffectPrefab, transform.position, quaternion.identity);
-        Destroy(this.gameObject);
+        if (gameObject.CompareTag("Enemy"))
+            Destroy(this.gameObject);
     }
 
 }

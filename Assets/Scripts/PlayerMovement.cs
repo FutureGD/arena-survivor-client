@@ -14,21 +14,17 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
-        GetComponent<Health>().OnDeath += HandleDeath;
+        GetComponent<Health>().OnDeath += FindFirstObjectByType<WaveManager>().PlayerDied;
     }
 
-    void HandleDeath()
-    {
-        Instantiate(deathEffectPrefab, transform.position, quaternion.identity);
-        gameObject.SetActive(false);
-        StartCoroutine(RestartAfterDelay(2f));
-    }
+    // Don't Uncomment its handled on the Wave Manager its just here for keeping history alive.
+    // void HandleDeath()
+    // {
 
-    IEnumerator RestartAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+    //     // StartCoroutine(RestartAfterDelay(2f));
+    //     // gameObject.SetActive(false);
+    // }
+
     void Awake()
     {
         // rb = GetComponent<Rigidbody2D>();

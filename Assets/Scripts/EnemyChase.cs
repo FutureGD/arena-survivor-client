@@ -26,5 +26,9 @@ public class EnemyChase : MonoBehaviour
         // transform.position = new Vector3(newPos.x, newPos.y, transform.position.z);
 
     }
+    public void SetSpeed(float s)
+    {
+        enemySpeed = s;
+    }
 
 }
